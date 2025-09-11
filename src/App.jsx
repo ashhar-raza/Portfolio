@@ -1,16 +1,22 @@
-import React from "react";
-import { FaJava, FaReact, FaNodeJs, FaDatabase, FaDocker, FaGithub, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaBars, FaTimes, FaJava, FaReact, FaNodeJs, FaDatabase, FaDocker, FaGithub, FaHtml5, FaCss3Alt } from "react-icons/fa";
 import { SiCplusplus, SiJavascript, SiTypescript, SiPython, SiKubernetes, SiMongodb, SiOracle, SiPostman, SiTailwindcss } from "react-icons/si";
 
 export default function Portfolio() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white font-sans">
       {/* Navbar */}
-      <nav className="flex justify-between items-center px-8 py-6 bg-white/10 backdrop-blur-md border-b border-white/20 shadow-lg rounded-b-3xl">
+      <nav className="flex justify-between items-center px-8 py-6 bg-white/10 backdrop-blur-md border-b border-white/20 shadow-lg rounded-b-3xl relative z-50">
         <h1 className="text-3xl font-extrabold text-white tracking-wide">
           Ashhar Raza
         </h1>
-        <div className="flex gap-8 text-white/90">
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex gap-8 text-white/90">
           <a href="#skills" className="relative group hover:text-white transition-colors duration-300">
             Skills
             <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
@@ -24,9 +30,27 @@ export default function Portfolio() {
             <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
           </a>
         </div>
+
+        {/* Mobile Hamburger */}
+        <div className="md:hidden">
+          <button onClick={toggleMenu} className="text-white text-3xl focus:outline-none">
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
+
+        {/* Mobile Menu - Black Glass Overlay */}
+        {menuOpen && (
+          <div className="absolute top-full right-0 w-60 bg-black/60 backdrop-blur-md rounded-xl flex flex-col items-start py-6 px-4 space-y-4 md:hidden z-50 shadow-lg mt-2">
+            <a href="#skills" onClick={toggleMenu} className="text-lg text-white hover:text-teal-400 transition-colors duration-300 w-full text-right">Skills</a>
+            <a href="#projects" onClick={toggleMenu} className="text-lg text-white hover:text-teal-400 transition-colors duration-300 w-full text-right">Projects</a>
+            <a href="#contact" onClick={toggleMenu} className="text-lg text-white hover:text-teal-400 transition-colors duration-300 w-full text-right">Contact</a>
+          </div>
+        )}
+
+
       </nav>
 
-      <main className="px-6 md:px-20 py-10 space-y-12">
+      <main className="px-6 md:px-20 py-10 space-y-12 relative z-10">
         {/* Summary */}
         <section className="backdrop-blur-lg bg-gradient-to-r from-cyan-500/10 to-teal-400/20 p-6 rounded-3xl shadow-xl 
                             hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-transform duration-300">
@@ -182,7 +206,6 @@ export default function Portfolio() {
             </ul>
           </div>
         </section>
-
 
         {/* Contact */}
         <section id="contact" className="backdrop-blur-lg bg-gradient-to-r from-cyan-500/10 to-teal-400/20 p-6 rounded-3xl shadow-xl 
