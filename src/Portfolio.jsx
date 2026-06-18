@@ -39,7 +39,7 @@ const injectStyles = () => {
       line-height: 1.6;
     }
 
-    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar { width: 10px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--copper); border-radius: 3px; }
 
@@ -190,10 +190,11 @@ const asset = (path) => `${BASE_URL}${path}`;
 /* ─── DATA ─────────────────────────────────────────────────────────────── */
 const CERTS = [
   { name: "Data Structures & Algorithms", issuer: "Scaler · NSDC", file: "DSA.png",        color: "#B87333" },
+  { name: "Databases & SQL",               issuer: "Scaler · NSDC", file: "SQL.png",        color: "#7A7266" },
+  { name: "Low Level Design",              issuer: "Scaler · NSDC", file: "LLD.png",        color: "#2A3356" },
+  { name: "High Level Design",             issuer: "Scaler · NSDC", file: "HLD.png",        color: "#34495E" },
   { name: "Java",                          issuer: "Scaler · NSDC", file: "Java.png",       color: "#1C2340" },
   { name: "Javascript",                    issuer: "Scaler · NSDC", file: "Javascript.png", color: "#8B5523" },
-  { name: "Low Level Design",              issuer: "Scaler · NSDC", file: "LLD.png",        color: "#2A3356" },
-  { name: "Databases & SQL",               issuer: "Scaler · NSDC", file: "SQL.png",        color: "#7A7266" },
 ];
 
 const SKILL_GROUPS = [
